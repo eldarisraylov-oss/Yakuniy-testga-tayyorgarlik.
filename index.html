@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Test - Umumiy psixologiya</title>
+
   <style>
     :root{
       --bg:#0b1220;
@@ -69,7 +70,11 @@
       padding:16px;
     }
     .grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px;}
-    @media (max-width: 800px){.grid{grid-template-columns: 1fr} header{flex-direction:column; align-items:flex-start} .top-actions{width:100%;}}
+    @media (max-width: 800px){
+      .grid{grid-template-columns: 1fr}
+      header{flex-direction:column; align-items:flex-start}
+      .top-actions{width:100%;}
+    }
     .item{
       padding:14px;
       border-radius: 18px;
@@ -107,30 +112,30 @@
     .hidden{display:none !important;}
   </style>
 
-  <!-- MathJax (LaTeX formulalar uchun) -->
+  <!-- MathJax -->
   <script>
-function typesetMath(){
-  if(window.MathJax && window.MathJax.typesetPromise){
-    MathJax.typesetPromise();
-  }
-}
-
     window.MathJax = {
       tex: {
-        inlineMath: [['\\(', '\\)']],
-        displayMath: [['\\[', '\\]']]
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
       }
     };
+
+    function typesetMath(){
+      if(window.MathJax && window.MathJax.typesetPromise){
+        MathJax.typesetPromise();
+      }
+    }
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
 </head>
+
 <body>
   <div class="app">
     <header>
       <div class="title">
         <h1>Test (offline)</h1>
-        <p>Umumiy psixologiya → Bo‘lim → Savollar</p>
+        <p>Fan → Bo‘lim → Savollar</p>
       </div>
       <div class="top-actions">
         <button class="secondary" id="btnBack">⬅ Orqaga</button>
@@ -160,7 +165,8 @@ function typesetMath(){
 
         <p class="question" id="qText"></p>
         <div class="options" id="optionsWrap"></div>
-<div class="row" style="margin-top:12px;">
+
+        <div class="row" style="margin-top:12px;">
           <button id="btnNext">➡ Keyingi savol</button>
           <span class="pill" id="scorePill">To‘g‘ri: 0 | Noto‘g‘ri: 0</span>
         </div>
@@ -169,51 +175,52 @@ function typesetMath(){
   </div>
 
   <script>
-    // 1) FANLAR RO‘YXATI (hozircha 1 ta fan)
+    // 1) FANLAR RO‘YXATI (HAMMASI QOLADI)
     const SUBJECTS = [
-    {
-      id: "matematik_analiz_metodika",
-      name: "Matematik analiz + Matematika o‘qitish metodikasi",
-      sections: [
-        { id: "bolim_1-50", name: "1–50 savollar", file: "questions/matematik_analiz_metodika/bolim_1-50.js" },
-        { id: "bolim_51-100", name: "51–100 savollar", file: "questions/matematik_analiz_metodika/bolim_51-100.js" },
-        { id: "bolim_101-150", name: "101–150 savollar", file: "questions/matematik_analiz_metodika/bolim_101-150.js" },
-        { id: "bolim_151-200", name: "151–200 savollar", file: "questions/matematik_analiz_metodika/bolim_151-200.js" },
-      ]
-    },
-    {
-      id: "informatika_metodika_zamonaviy_dasturlash",
-      name: "Informatikani o‘qitish metodikasi + Zamonaviy dasturlash tillari",
-      sections: [
-        { id: "bolim_1-50", name: "1–50 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_1-50.js" },
-        { id: "bolim_51-100", name: "51–100 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_51-100.js" },
-        { id: "bolim_101-150", name: "101–150 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_101-150.js" },
-        { id: "bolim_151-200", name: "151–200 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_151-200.js" },
-        { id: "bolim_201-250", name: "201–250 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_201-250.js" },
-        { id: "bolim_251-300", name: "251–300 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_251-300.js" },
-        { id: "bolim_301-350", name: "301–350 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_301-350.js" },
-        { id: "bolim_351-400", name: "351–400 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_351-400.js" },
-        { id: "bolim_401-408", name: "401–408 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_401-408.js" },
-      ]
-    },
-    {
-      id: "umumiy_pedagogika",
-      name: "Umumiy pedagogika",
-      sections: [
-        { id: "bolim1_1-50", name: "1–50 savollar", file: "questions/umumiy_pedagogika/bolim1_1-50.js" },
-        { id: "bolim2_51-100", name: "51–100 savollar", file: "questions/umumiy_pedagogika/bolim2_51-100.js" },
-        { id: "bolim3_101-150", name: "101–150 savollar", file: "questions/umumiy_pedagogika/bolim3_101-150.js" },
-        { id: "bolim4_151-200", name: "151–200 savollar", file: "questions/umumiy_pedagogika/bolim4_151-200.js" }
-      ]
-    },
+      {
+        id: "matematik_analiz_metodika",
+        name: "Matematik analiz + Matematika o‘qitish metodikasi",
+        description: "200 ta savol (4 bo‘lim).",
+        sections: [
+          { id: "bolim_1-50", name: "1–50 savollar", file: "questions/matematik_analiz_metodika/bolim_1-50.js" },
+          { id: "bolim_51-100", name: "51–100 savollar", file: "questions/matematik_analiz_metodika/bolim_51-100.js" },
+          { id: "bolim_101-150", name: "101–150 savollar", file: "questions/matematik_analiz_metodika/bolim_101-150.js" },
+          { id: "bolim_151-200", name: "151–200 savollar", file: "questions/matematik_analiz_metodika/bolim_151-200.js" }
+        ]
+      },
+      {
+        id: "informatika_metodika_zamonaviy_dasturlash",
+        name: "Informatikani o‘qitish metodikasi + Zamonaviy dasturlash tillari",
+        description: "408 ta savol (9 bo‘lim).",
+        sections: [
+          { id: "bolim_1-50", name: "1–50 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_1-50.js" },
+          { id: "bolim_51-100", name: "51–100 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_51-100.js" },
+          { id: "bolim_101-150", name: "101–150 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_101-150.js" },
+          { id: "bolim_151-200", name: "151–200 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_151-200.js" },
+          { id: "bolim_201-250", name: "201–250 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_201-250.js" },
+          { id: "bolim_251-300", name: "251–300 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_251-300.js" },
+          { id: "bolim_301-350", name: "301–350 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_301-350.js" },
+          { id: "bolim_351-400", name: "351–400 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_351-400.js" },
+          { id: "bolim_401-408", name: "401–408 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_401-408.js" }
+        ]
+      },
+      {
+        id: "umumiy_pedagogika",
+        name: "Umumiy pedagogika",
+        description: "200 ta savol (4 bo‘lim).",
+        sections: [
+          { id: "bolim1_1-50", name: "1–50 savollar", file: "questions/umumiy_pedagogika/bolim1_1-50.js" },
+          { id: "bolim2_51-100", name: "51–100 savollar", file: "questions/umumiy_pedagogika/bolim2_51-100.js" },
+          { id: "bolim3_101-150", name: "101–150 savollar", file: "questions/umumiy_pedagogika/bolim3_101-150.js" },
+          { id: "bolim4_151-200", name: "151–200 savollar", file: "questions/umumiy_pedagogika/bolim4_151-200.js" }
+        ]
+      },
       {
         id: "umumiy_psixologiya",
         name: "Umumiy psixologiya",
         description: "211 ta savol (4 bo‘lim).",
         sections: [
           { id:"bolim1_1-50", name:"1–50 savollar", file:"questions/umumiy_psixologiya/bolim1_1-50.js" },
-
-          // keyin qo‘shamiz:
           { id:"bolim2_51-100", name:"51–100 savollar", file:"questions/umumiy_psixologiya/bolim2_51-100.js" },
           { id:"bolim3_101-150", name:"101–150 savollar", file:"questions/umumiy_psixologiya/bolim3_101-150.js" },
           { id:"bolim4_151-211", name:"151–211 savollar", file:"questions/umumiy_psixologiya/bolim4_151-211.js" }
@@ -266,7 +273,7 @@ function typesetMath(){
       SUBJECTS.forEach(sub => {
         const div = document.createElement("div");
         div.className = "item";
-        div.innerHTML = `<h3>${sub.name}</h3><p>${sub.description}</p>`;
+        div.innerHTML = `<h3>${sub.name}</h3><p>${sub.description || ""}</p>`;
         div.addEventListener("click", () => {
           currentSubject = sub;
           renderSections();
@@ -283,17 +290,7 @@ function typesetMath(){
       currentSubject.sections.forEach(sec => {
         const div = document.createElement("div");
         div.className = "item";
-
-        const isDisabled = !!sec.disabled;
-
-        div.style.opacity = isDisabled ? "0.55" : "1";
-        div.style.pointerEvents = isDisabled ? "none" : "auto";
-
-        div.innerHTML = `
-          <h3>${sec.name}</h3>
-          <p>${isDisabled ? "Hali tayyor emas" : "Testni boshlash"}</p>
-        `;
-
+        div.innerHTML = `<h3>${sec.name}</h3><p>Testni boshlash</p>`;
         div.addEventListener("click", () => loadSectionAndStart(sec));
         sectionsGrid.appendChild(div);
       });
@@ -313,9 +310,7 @@ function typesetMath(){
 
     async function loadSectionAndStart(sec){
       try{
-        // old section data clear
         window.QUESTION_SECTION = null;
-
         await loadScript(sec.file);
 
         if(!window.QUESTION_SECTION || !window.QUESTION_SECTION.questions){
@@ -325,7 +320,6 @@ function typesetMath(){
 
         currentSection = window.QUESTION_SECTION;
         startQuiz();
-
       }catch(err){
         alert("Xatolik: " + err.message);
       }
@@ -339,7 +333,6 @@ function typesetMath(){
 
       quizTitle.textContent = `3) Test: ${currentSubject.name} → ${currentSection.name}`;
       renderQuestion();
-      typesetMath();
       showScreen("quiz");
     }
 
@@ -352,7 +345,8 @@ function typesetMath(){
       scorePill.textContent = `To‘g‘ri: ${correctCount} | Noto‘g‘ri: ${wrongCount}`;
 
       const item = currentSection.questions[currentIndex];
-      qText.textContent = item.n + ". " + item.q;
+
+      qText.innerHTML = item.n + ". " + item.q;
 
       item.options.forEach((optText, idx) => {
         const btn = document.createElement("button");
@@ -361,6 +355,8 @@ function typesetMath(){
         btn.addEventListener("click", () => chooseAnswer(idx));
         optionsWrap.appendChild(btn);
       });
+
+      typesetMath();
     }
 
     function chooseAnswer(chosenIndex){
@@ -371,15 +367,13 @@ function typesetMath(){
       const buttons = [...optionsWrap.querySelectorAll(".opt")];
       const correctIndex = item.correctIndex;
 
-      // To‘g‘ri javobni yashil qilish
-      buttons[correctIndex].classList.add("correct");
+      if(buttons[correctIndex]) buttons[correctIndex].classList.add("correct");
 
-      // Tanlangan javob noto‘g‘ri bo‘lsa qizil qilish
       if(chosenIndex === correctIndex){
         correctCount++;
       } else {
         wrongCount++;
-        buttons[chosenIndex].classList.add("wrong");
+        if(buttons[chosenIndex]) buttons[chosenIndex].classList.add("wrong");
       }
 
       scorePill.textContent = `To‘g‘ri: ${correctCount} | Noto‘g‘ri: ${wrongCount}`;
@@ -392,9 +386,8 @@ function typesetMath(){
       if(currentIndex < total - 1){
         currentIndex++;
         renderQuestion();
-      typesetMath();
       } else {
-        alert(`🎉 Test tugadi! Natija: To‘g‘ri ${correctCount} ta, Noto‘g‘ri ${wrongCount} ta.`);
+        alert(`🎉 Test tugadi!\n\nNatija:\nTo‘g‘ri: ${correctCount} ta\nNoto‘g‘ri: ${wrongCount} ta`);
         locked = true;
       }
     }
