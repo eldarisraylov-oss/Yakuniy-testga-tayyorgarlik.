@@ -62,6 +62,11 @@
     button:active{transform: translateY(0px)}
     button.secondary{background: rgba(255,255,255,.04);}
     button.danger{background: rgba(255,77,77,.12); border-color: rgba(255,77,77,.25);}
+    button:disabled{
+      opacity:.45;
+      cursor:not-allowed;
+      transform:none !important;
+    }
     .card{
       background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
       border:1px solid var(--line);
@@ -157,9 +162,29 @@
         <div class="grid" id="sectionsGrid" style="margin-top:10px;"></div>
       </section>
 
+      <!-- REJIM TANLASH -->
+      <section class="card hidden" id="screenMode">
+        <div class="row">
+          <h2 style="margin:0; font-size:16px;" id="modeTitle">3) Rejimni tanlang</h2>
+          <span class="pill" id="modeInfo"></span>
+        </div>
+
+        <div class="grid" style="margin-top:10px;">
+          <div class="item" id="modeNormal">
+            <h3>Oddiy (ketma-ket)</h3>
+            <p>Savollar 1 → 2 → 3 tartibda keladi.</p>
+          </div>
+
+          <div class="item" id="modeRandom">
+            <h3>Random (aralash)</h3>
+            <p>Bo‘lim ichidagi savollar aralashtirib beriladi.</p>
+          </div>
+        </div>
+      </section>
+
       <section class="card hidden" id="screenQuiz">
         <div class="row">
-          <h2 style="margin:0; font-size:16px;" id="quizTitle">3) Test</h2>
+          <h2 style="margin:0; font-size:16px;" id="quizTitle">4) Test</h2>
           <span class="pill" id="quizCounter"></span>
         </div>
 
@@ -167,6 +192,7 @@
         <div class="options" id="optionsWrap"></div>
 
         <div class="row" style="margin-top:12px;">
+          <button id="btnPrev">⬅ Oldingi</button>
           <button id="btnNext">➡ Keyingi savol</button>
           <span class="pill" id="scorePill">To‘g‘ri: 0 | Noto‘g‘ri: 0</span>
         </div>
@@ -231,20 +257,35 @@
     // 2) STATE
     let currentSubject = null;
     let currentSection = null;
+
     let currentIndex = 0;
-    let locked = false;
     let correctCount = 0;
     let wrongCount = 0;
+
+    // rejim: "normal" yoki "random"
+    let currentMode = "normal";
+
+    // Savollar listi (oddiyda original, randomda aralashtirilgan)
+    let activeQuestions = [];
+
+    // javoblar saqlanadi: { [index]: { chosenIndex, isCorrect } }
+    let answersMap = {};
 
     // 3) ELEMENTS
     const screenSubjects = document.getElementById("screenSubjects");
     const screenSections = document.getElementById("screenSections");
+    const screenMode = document.getElementById("screenMode");
     const screenQuiz = document.getElementById("screenQuiz");
 
     const subjectsGrid = document.getElementById("subjectsGrid");
     const sectionsGrid = document.getElementById("sectionsGrid");
     const sectionsTitle = document.getElementById("sectionsTitle");
     const sectionsInfo = document.getElementById("sectionsInfo");
+
+    const modeTitle = document.getElementById("modeTitle");
+    const modeInfo = document.getElementById("modeInfo");
+    const modeNormal = document.getElementById("modeNormal");
+    const modeRandom = document.getElementById("modeRandom");
 
     const quizTitle = document.getElementById("quizTitle");
     const quizCounter = document.getElementById("quizCounter");
@@ -256,15 +297,18 @@
     const btnBack = document.getElementById("btnBack");
     const btnRestart = document.getElementById("btnRestart");
     const btnNext = document.getElementById("btnNext");
+    const btnPrev = document.getElementById("btnPrev");
 
     // 4) HELPERS
     function showScreen(name){
       screenSubjects.classList.add("hidden");
       screenSections.classList.add("hidden");
+      screenMode.classList.add("hidden");
       screenQuiz.classList.add("hidden");
 
       if(name === "subjects") screenSubjects.classList.remove("hidden");
       if(name === "sections") screenSections.classList.remove("hidden");
+      if(name === "mode") screenMode.classList.remove("hidden");
       if(name === "quiz") screenQuiz.classList.remove("hidden");
     }
 
@@ -291,7 +335,7 @@
         const div = document.createElement("div");
         div.className = "item";
         div.innerHTML = `<h3>${sec.name}</h3><p>Testni boshlash</p>`;
-        div.addEventListener("click", () => loadSectionAndStart(sec));
+        div.addEventListener("click", () => loadSectionAndChooseMode(sec));
         sectionsGrid.appendChild(div);
       });
 
@@ -308,7 +352,7 @@
       });
     }
 
-    async function loadSectionAndStart(sec){
+    async function loadSectionAndChooseMode(sec){
       try{
         window.QUESTION_SECTION = null;
         await loadScript(sec.file);
@@ -319,32 +363,62 @@
         }
 
         currentSection = window.QUESTION_SECTION;
-        startQuiz();
+
+        modeTitle.textContent = `3) Rejim: ${currentSubject.name} → ${currentSection.name}`;
+        modeInfo.textContent = `Savollar: ${currentSection.questions.length} ta`;
+
+        showScreen("mode");
       }catch(err){
         alert("Xatolik: " + err.message);
       }
     }
 
-    function startQuiz(){
+    function shuffleArray(arr){
+      // Fisher–Yates
+      for(let i = arr.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function startQuiz(mode){
+      currentMode = mode || "normal";
+
       currentIndex = 0;
       correctCount = 0;
       wrongCount = 0;
-      locked = false;
 
-      quizTitle.textContent = `3) Test: ${currentSubject.name} → ${currentSection.name}`;
+      answersMap = {};
+
+      // activeQuestions ni tayyorlab olamiz
+      if(currentMode === "random"){
+        // nusxa olamiz va aralashtiramiz
+        activeQuestions = shuffleArray([...currentSection.questions]);
+      } else {
+        // original tartib
+        activeQuestions = [...currentSection.questions];
+      }
+
+      quizTitle.textContent = `4) Test: ${currentSubject.name} → ${currentSection.name} (${currentMode === "random" ? "Random" : "Oddiy"})`;
       renderQuestion();
       showScreen("quiz");
     }
 
+    function updateNavButtons(){
+      const total = activeQuestions.length;
+      btnPrev.disabled = currentIndex === 0;
+      btnNext.disabled = currentIndex >= total - 1;
+    }
+
     function renderQuestion(){
       optionsWrap.innerHTML = "";
-      locked = false;
 
-      const total = currentSection.questions.length;
+      const total = activeQuestions.length;
       quizCounter.textContent = `Savol: ${currentIndex + 1} / ${total}`;
       scorePill.textContent = `To‘g‘ri: ${correctCount} | Noto‘g‘ri: ${wrongCount}`;
 
-      const item = currentSection.questions[currentIndex];
+      const item = activeQuestions[currentIndex];
 
       qText.innerHTML = item.n + ". " + item.q;
 
@@ -352,51 +426,93 @@
         const btn = document.createElement("button");
         btn.className = "opt";
         btn.innerHTML = `${String.fromCharCode(65 + idx)}) ${optText}`;
-        btn.addEventListener("click", () => chooseAnswer(idx));
+
+        // agar bu savolga javob berilgan bo‘lsa -> bosib bo‘lmaydi
+        const saved = answersMap[currentIndex];
+        if(saved){
+          btn.disabled = true;
+        } else {
+          btn.addEventListener("click", () => chooseAnswer(idx));
+        }
+
         optionsWrap.appendChild(btn);
       });
 
+      // agar javob oldin tanlangan bo‘lsa ranglarni qayta chiqaramiz
+      const saved = answersMap[currentIndex];
+      if(saved){
+        const buttons = [...optionsWrap.querySelectorAll(".opt")];
+        const correctIndex = item.correctIndex;
+
+        if(buttons[correctIndex]) buttons[correctIndex].classList.add("correct");
+
+        if(saved.chosenIndex !== correctIndex){
+          if(buttons[saved.chosenIndex]) buttons[saved.chosenIndex].classList.add("wrong");
+        }
+      }
+
+      updateNavButtons();
       typesetMath();
     }
 
     function chooseAnswer(chosenIndex){
-      if(locked) return;
-      locked = true;
-
-      const item = currentSection.questions[currentIndex];
+      const item = activeQuestions[currentIndex];
       const buttons = [...optionsWrap.querySelectorAll(".opt")];
       const correctIndex = item.correctIndex;
 
+      // javobni saqlaymiz
+      const isCorrect = chosenIndex === correctIndex;
+      answersMap[currentIndex] = { chosenIndex, isCorrect };
+
+      // UI bo‘yash
       if(buttons[correctIndex]) buttons[correctIndex].classList.add("correct");
 
-      if(chosenIndex === correctIndex){
+      if(isCorrect){
         correctCount++;
       } else {
         wrongCount++;
         if(buttons[chosenIndex]) buttons[chosenIndex].classList.add("wrong");
       }
 
+      // Endi hamma option disable bo‘ladi
+      buttons.forEach(b => b.disabled = true);
+
       scorePill.textContent = `To‘g‘ri: ${correctCount} | Noto‘g‘ri: ${wrongCount}`;
     }
 
     function nextQuestion(){
-      if(!currentSection) return;
+      if(!activeQuestions.length) return;
 
-      const total = currentSection.questions.length;
+      const total = activeQuestions.length;
+
       if(currentIndex < total - 1){
         currentIndex++;
         renderQuestion();
       } else {
         alert(`🎉 Test tugadi!\n\nNatija:\nTo‘g‘ri: ${correctCount} ta\nNoto‘g‘ri: ${wrongCount} ta`);
-        locked = true;
+      }
+    }
+
+    function prevQuestion(){
+      if(!activeQuestions.length) return;
+      if(currentIndex > 0){
+        currentIndex--;
+        renderQuestion();
       }
     }
 
     function goBack(){
+      // quiz -> mode
       if(!screenQuiz.classList.contains("hidden")){
+        showScreen("mode");
+        return;
+      }
+      // mode -> sections
+      if(!screenMode.classList.contains("hidden")){
         showScreen("sections");
         return;
       }
+      // sections -> subjects
       if(!screenSections.classList.contains("hidden")){
         showScreen("subjects");
         return;
@@ -406,19 +522,37 @@
     function restartAll(){
       currentSubject = null;
       currentSection = null;
+
       currentIndex = 0;
       correctCount = 0;
       wrongCount = 0;
-      locked = false;
+
+      currentMode = "normal";
+      activeQuestions = [];
+      answersMap = {};
 
       renderSubjects();
       showScreen("subjects");
     }
 
-    btnNext.addEventListener("click", nextQuestion);
+    // EVENTS
+    btnNext.addEventListener("click", () => {
+      // oxirgi savolda bo‘lsa natija chiqsin
+      if(currentIndex === activeQuestions.length - 1){
+        alert(`🎉 Test tugadi!\n\nNatija:\nTo‘g‘ri: ${correctCount} ta\nNoto‘g‘ri: ${wrongCount} ta`);
+        return;
+      }
+      nextQuestion();
+    });
+
+    btnPrev.addEventListener("click", prevQuestion);
     btnBack.addEventListener("click", goBack);
     btnRestart.addEventListener("click", restartAll);
 
+    modeNormal.addEventListener("click", () => startQuiz("normal"));
+    modeRandom.addEventListener("click", () => startQuiz("random"));
+
+    // INIT
     renderSubjects();
     showScreen("subjects");
   </script>
