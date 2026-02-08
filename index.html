@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Test - Umumiy psixologiya</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#111a2e;
+      --text:#e9eefc;
+      --muted:#a9b5d6;
+      --line:rgba(255,255,255,.08);
+      --good:#2bd576;
+      --bad:#ff4d4d;
+      --btn:#1a2a4a;
+      --btn2:#243a63;
+      --shadow: 0 18px 40px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1000px 600px at 20% 0%, rgba(79,140,255,.18), transparent 60%),
+                  radial-gradient(900px 600px at 90% 10%, rgba(160,79,255,.16), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      padding:18px;
+    }
+    .app{width:min(980px, 100%); display:flex; flex-direction:column; gap:14px;}
+    header{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      padding:16px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .title h1{font-size:18px; margin:0;}
+    .title p{margin:4px 0 0 0; color:var(--muted); font-size:13px;}
+    .top-actions{display:flex; gap:10px; flex-wrap:wrap;}
+    button{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, var(--btn2), var(--btn));
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:14px;
+      cursor:pointer;
+      transition:.15s ease;
+      font-weight:700;
+      font-size:13px;
+    }
+    button:hover{transform: translateY(-1px)}
+    button:active{transform: translateY(0px)}
+    button.secondary{background: rgba(255,255,255,.04);}
+    button.danger{background: rgba(255,77,77,.12); border-color: rgba(255,77,77,.25);}
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:16px;
+    }
+    .grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px;}
+    @media (max-width: 800px){.grid{grid-template-columns: 1fr} header{flex-direction:column; align-items:flex-start} .top-actions{width:100%;}}
+    .item{
+      padding:14px;
+      border-radius: 18px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      cursor:pointer;
+      transition:.15s ease;
+    }
+    .item:hover{transform: translateY(-1px)}
+    .item h3{margin:0; font-size:15px;}
+    .item p{margin:8px 0 0 0; color:var(--muted); font-size:13px; line-height:1.4;}
+    .pill{
+      display:inline-flex; gap:6px; align-items:center;
+      font-size:12px; padding:6px 10px; border-radius:999px;
+      border:1px solid var(--line); color:var(--muted);
+      background: rgba(255,255,255,.03);
+    }
+    .row{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;}
+    .question{font-size:16px; margin:0 0 12px 0; line-height:1.45;}
+    .options{display:grid; grid-template-columns: 1fr; gap:10px;}
+    .opt{
+      text-align:left;
+      padding:12px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.03);
+      border:1px solid var(--line);
+      cursor:pointer;
+      transition:.12s ease;
+      font-weight:700;
+      line-height:1.35;
+    }
+    .opt:hover{transform: translateY(-1px)}
+    .opt.correct{border-color: rgba(43,213,118,.35); background: rgba(43,213,118,.12);}
+    .opt.wrong{border-color: rgba(255,77,77,.35); background: rgba(255,77,77,.12);}
+    .hidden{display:none !important;}
+  </style>
+
+  <!-- MathJax (LaTeX formulalar uchun) -->
+  <script>
+function typesetMath(){
+  if(window.MathJax && window.MathJax.typesetPromise){
+    MathJax.typesetPromise();
+  }
+}
+
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="title">
+        <h1>Test (offline)</h1>
+        <p>Umumiy psixologiya → Bo‘lim → Savollar</p>
+      </div>
+      <div class="top-actions">
+        <button class="secondary" id="btnBack">⬅ Orqaga</button>
+        <button class="danger" id="btnRestart">🔄 Qayta boshlash</button>
+      </div>
+    </header>
+
+    <main style="display:grid; gap:14px;">
+      <section class="card" id="screenSubjects">
+        <h2 style="margin:0 0 10px 0; font-size:16px;">1) Fanni tanlang</h2>
+        <div class="grid" id="subjectsGrid"></div>
+      </section>
+
+      <section class="card hidden" id="screenSections">
+        <div class="row">
+          <h2 style="margin:0; font-size:16px;" id="sectionsTitle">2) Bo‘limni tanlang</h2>
+          <span class="pill" id="sectionsInfo"></span>
+        </div>
+        <div class="grid" id="sectionsGrid" style="margin-top:10px;"></div>
+      </section>
+
+      <section class="card hidden" id="screenQuiz">
+        <div class="row">
+          <h2 style="margin:0; font-size:16px;" id="quizTitle">3) Test</h2>
+          <span class="pill" id="quizCounter"></span>
+        </div>
+
+        <p class="question" id="qText"></p>
+        <div class="options" id="optionsWrap"></div>
+<div class="row" style="margin-top:12px;">
+          <button id="btnNext">➡ Keyingi savol</button>
+          <span class="pill" id="scorePill">To‘g‘ri: 0 | Noto‘g‘ri: 0</span>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // 1) FANLAR RO‘YXATI (hozircha 1 ta fan)
+    const SUBJECTS = [
+    {
+      id: "matematik_analiz_metodika",
+      name: "Matematik analiz + Matematika o‘qitish metodikasi",
+      sections: [
+        { id: "bolim_1-50", name: "1–50 savollar", file: "questions/matematik_analiz_metodika/bolim_1-50.js" },
+        { id: "bolim_51-100", name: "51–100 savollar", file: "questions/matematik_analiz_metodika/bolim_51-100.js" },
+        { id: "bolim_101-150", name: "101–150 savollar", file: "questions/matematik_analiz_metodika/bolim_101-150.js" },
+        { id: "bolim_151-200", name: "151–200 savollar", file: "questions/matematik_analiz_metodika/bolim_151-200.js" },
+      ]
+    },
+    {
+      id: "informatika_metodika_zamonaviy_dasturlash",
+      name: "Informatikani o‘qitish metodikasi + Zamonaviy dasturlash tillari",
+      sections: [
+        { id: "bolim_1-50", name: "1–50 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_1-50.js" },
+        { id: "bolim_51-100", name: "51–100 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_51-100.js" },
+        { id: "bolim_101-150", name: "101–150 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_101-150.js" },
+        { id: "bolim_151-200", name: "151–200 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_151-200.js" },
+        { id: "bolim_201-250", name: "201–250 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_201-250.js" },
+        { id: "bolim_251-300", name: "251–300 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_251-300.js" },
+        { id: "bolim_301-350", name: "301–350 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_301-350.js" },
+        { id: "bolim_351-400", name: "351–400 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_351-400.js" },
+        { id: "bolim_401-408", name: "401–408 savollar", file: "questions/informatika_metodika_zamonaviy_dasturlash/bolim_401-408.js" },
+      ]
+    },
+    {
+      id: "umumiy_pedagogika",
+      name: "Umumiy pedagogika",
+      sections: [
+        { id: "bolim1_1-50", name: "1–50 savollar", file: "questions/umumiy_pedagogika/bolim1_1-50.js" },
+        { id: "bolim2_51-100", name: "51–100 savollar", file: "questions/umumiy_pedagogika/bolim2_51-100.js" },
+        { id: "bolim3_101-150", name: "101–150 savollar", file: "questions/umumiy_pedagogika/bolim3_101-150.js" },
+        { id: "bolim4_151-200", name: "151–200 savollar", file: "questions/umumiy_pedagogika/bolim4_151-200.js" }
+      ]
+    },
+      {
+        id: "umumiy_psixologiya",
+        name: "Umumiy psixologiya",
+        description: "211 ta savol (4 bo‘lim).",
+        sections: [
+          { id:"bolim1_1-50", name:"1–50 savollar", file:"questions/umumiy_psixologiya/bolim1_1-50.js" },
+
+          // keyin qo‘shamiz:
+          { id:"bolim2_51-100", name:"51–100 savollar", file:"questions/umumiy_psixologiya/bolim2_51-100.js" },
+          { id:"bolim3_101-150", name:"101–150 savollar", file:"questions/umumiy_psixologiya/bolim3_101-150.js" },
+          { id:"bolim4_151-211", name:"151–211 savollar", file:"questions/umumiy_psixologiya/bolim4_151-211.js" }
+        ]
+      }
+    ];
+
+    // 2) STATE
+    let currentSubject = null;
+    let currentSection = null;
+    let currentIndex = 0;
+    let locked = false;
+    let correctCount = 0;
+    let wrongCount = 0;
+
+    // 3) ELEMENTS
+    const screenSubjects = document.getElementById("screenSubjects");
+    const screenSections = document.getElementById("screenSections");
+    const screenQuiz = document.getElementById("screenQuiz");
+
+    const subjectsGrid = document.getElementById("subjectsGrid");
+    const sectionsGrid = document.getElementById("sectionsGrid");
+    const sectionsTitle = document.getElementById("sectionsTitle");
+    const sectionsInfo = document.getElementById("sectionsInfo");
+
+    const quizTitle = document.getElementById("quizTitle");
+    const quizCounter = document.getElementById("quizCounter");
+
+    const qText = document.getElementById("qText");
+    const optionsWrap = document.getElementById("optionsWrap");
+    const scorePill = document.getElementById("scorePill");
+
+    const btnBack = document.getElementById("btnBack");
+    const btnRestart = document.getElementById("btnRestart");
+    const btnNext = document.getElementById("btnNext");
+
+    // 4) HELPERS
+    function showScreen(name){
+      screenSubjects.classList.add("hidden");
+      screenSections.classList.add("hidden");
+      screenQuiz.classList.add("hidden");
+
+      if(name === "subjects") screenSubjects.classList.remove("hidden");
+      if(name === "sections") screenSections.classList.remove("hidden");
+      if(name === "quiz") screenQuiz.classList.remove("hidden");
+    }
+
+    function renderSubjects(){
+      subjectsGrid.innerHTML = "";
+      SUBJECTS.forEach(sub => {
+        const div = document.createElement("div");
+        div.className = "item";
+        div.innerHTML = `<h3>${sub.name}</h3><p>${sub.description}</p>`;
+        div.addEventListener("click", () => {
+          currentSubject = sub;
+          renderSections();
+        });
+        subjectsGrid.appendChild(div);
+      });
+    }
+
+    function renderSections(){
+      sectionsGrid.innerHTML = "";
+      sectionsTitle.textContent = `2) Bo‘lim: ${currentSubject.name}`;
+      sectionsInfo.textContent = `Bo‘limlar: ${currentSubject.sections.length}`;
+
+      currentSubject.sections.forEach(sec => {
+        const div = document.createElement("div");
+        div.className = "item";
+
+        const isDisabled = !!sec.disabled;
+
+        div.style.opacity = isDisabled ? "0.55" : "1";
+        div.style.pointerEvents = isDisabled ? "none" : "auto";
+
+        div.innerHTML = `
+          <h3>${sec.name}</h3>
+          <p>${isDisabled ? "Hali tayyor emas" : "Testni boshlash"}</p>
+        `;
+
+        div.addEventListener("click", () => loadSectionAndStart(sec));
+        sectionsGrid.appendChild(div);
+      });
+
+      showScreen("sections");
+    }
+
+    function loadScript(file){
+      return new Promise((resolve, reject) => {
+        const s = document.createElement("script");
+        s.src = file + "?v=" + Date.now();
+        s.onload = resolve;
+        s.onerror = () => reject(new Error("Fayl topilmadi: " + file));
+        document.body.appendChild(s);
+      });
+    }
+
+    async function loadSectionAndStart(sec){
+      try{
+        // old section data clear
+        window.QUESTION_SECTION = null;
+
+        await loadScript(sec.file);
+
+        if(!window.QUESTION_SECTION || !window.QUESTION_SECTION.questions){
+          alert("Bo‘lim yuklandi, lekin savollar topilmadi.");
+          return;
+        }
+
+        currentSection = window.QUESTION_SECTION;
+        startQuiz();
+
+      }catch(err){
+        alert("Xatolik: " + err.message);
+      }
+    }
+
+    function startQuiz(){
+      currentIndex = 0;
+      correctCount = 0;
+      wrongCount = 0;
+      locked = false;
+
+      quizTitle.textContent = `3) Test: ${currentSubject.name} → ${currentSection.name}`;
+      renderQuestion();
+      typesetMath();
+      showScreen("quiz");
+    }
+
+    function renderQuestion(){
+      optionsWrap.innerHTML = "";
+      locked = false;
+
+      const total = currentSection.questions.length;
+      quizCounter.textContent = `Savol: ${currentIndex + 1} / ${total}`;
+      scorePill.textContent = `To‘g‘ri: ${correctCount} | Noto‘g‘ri: ${wrongCount}`;
+
+      const item = currentSection.questions[currentIndex];
+      qText.textContent = item.n + ". " + item.q;
+
+      item.options.forEach((optText, idx) => {
+        const btn = document.createElement("button");
+        btn.className = "opt";
+        btn.innerHTML = `${String.fromCharCode(65 + idx)}) ${optText}`;
+        btn.addEventListener("click", () => chooseAnswer(idx));
+        optionsWrap.appendChild(btn);
+      });
+    }
+
+    function chooseAnswer(chosenIndex){
+      if(locked) return;
+      locked = true;
+
+      const item = currentSection.questions[currentIndex];
+      const buttons = [...optionsWrap.querySelectorAll(".opt")];
+      const correctIndex = item.correctIndex;
+
+      // To‘g‘ri javobni yashil qilish
+      buttons[correctIndex].classList.add("correct");
+
+      // Tanlangan javob noto‘g‘ri bo‘lsa qizil qilish
+      if(chosenIndex === correctIndex){
+        correctCount++;
+      } else {
+        wrongCount++;
+        buttons[chosenIndex].classList.add("wrong");
+      }
+
+      scorePill.textContent = `To‘g‘ri: ${correctCount} | Noto‘g‘ri: ${wrongCount}`;
+    }
+
+    function nextQuestion(){
+      if(!currentSection) return;
+
+      const total = currentSection.questions.length;
+      if(currentIndex < total - 1){
+        currentIndex++;
+        renderQuestion();
+      typesetMath();
+      } else {
+        alert(`🎉 Test tugadi! Natija: To‘g‘ri ${correctCount} ta, Noto‘g‘ri ${wrongCount} ta.`);
+        locked = true;
+      }
+    }
+
+    function goBack(){
+      if(!screenQuiz.classList.contains("hidden")){
+        showScreen("sections");
+        return;
+      }
+      if(!screenSections.classList.contains("hidden")){
+        showScreen("subjects");
+        return;
+      }
+    }
+
+    function restartAll(){
+      currentSubject = null;
+      currentSection = null;
+      currentIndex = 0;
+      correctCount = 0;
+      wrongCount = 0;
+      locked = false;
+
+      renderSubjects();
+      showScreen("subjects");
+    }
+
+    btnNext.addEventListener("click", nextQuestion);
+    btnBack.addEventListener("click", goBack);
+    btnRestart.addEventListener("click", restartAll);
+
+    renderSubjects();
+    showScreen("subjects");
+  </script>
+</body>
+</html>
