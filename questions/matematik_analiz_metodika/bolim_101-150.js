@@ -4,21 +4,21 @@ window.QUESTION_SECTION = {
   questions: [
   {
     "n": 101,
-    "q": "Oʻquvchilarning oʻquv-bilish faoliyatlarini tashkil etishda qanday oʻqitish metodlaridan foydalaniladi?",
+    "q": "O‘quvchilarning o‘quv-bilish faoliyatlarini tashkil etishda qanday o‘qitish metodlaridan foydalaniladi?",
     "options": [
-      "Induksiya va deduktsiya metodlari",
-      "Ogʻzaki amaliy",
+      "Induksiya va deduksiya metodlari",
+      "Og‘zaki amaliy",
       "Illyustrativ, muammoli va tatqiqiy",
-      "Koʻrgazmali, Induksiya metodlari, deduktsiya va analogiya"
+      "Ko‘rgazmali, Induksiya metodlari, deduksiya va analogiya"
     ],
     "correctIndex": 1
   },
   {
     "n": 102,
-    "q": "Amaliy ishlarni bajarishda qoʻllaniladigan metodlarni koʻrsating?",
+    "q": "Amaliy ishlarni bajarishda qo‘llaniladigan metodlarni ko‘rsating?",
     "options": [
       "Tatqiqiy",
-      "Induksiya va deduktsiya metodlari",
+      "Induksiya va deduksiya metodlari",
       "Analogiya metodi",
       "Illyustrativ, muammoli"
     ],
@@ -26,10 +26,10 @@ window.QUESTION_SECTION = {
   },
   {
     "n": 103,
-    "q": "Matematik tushunshalarni aniqlash qanday turlarga boʻlinadi",
+    "q": "Matematik tushunchalarni aniqlash qanday turlarga bo‘linadi?",
     "options": [
       "Induktiv, distributivlik real",
-      "https://yda.uznpu./start_yda_view.php?tester_id=355211102757&rqw=eba5f4e901ad58bdd0d768eec1b87818&lang=&qfn=4 33/59 08.02.2026, 15:02 _ Genetik, induktiv, real",
+      "Genetik, induktiv, real",
       "Rejalashtirish, klassifikatsiyalash",
       "Real, klassifikatsiyalash va genetik ta’riflar"
     ],
@@ -37,21 +37,21 @@ window.QUESTION_SECTION = {
   },
   {
     "n": 104,
-    "q": "Oʻqitish qaysi shakllarda tashkil etiladi?",
+    "q": "O‘qitish qaysi shakllarda tashkil etiladi?",
     "options": [
       "Ekskursiya, uyga vazifa",
-      "Guruhli mashgʻulot",
-      "Dars, sinfdan tashqari mashgʻulotlar",
+      "Guruhli mashg‘ulot",
+      "Dars, sinfdan tashqari mashg‘ulotlar",
       "Uyga vazifa, mustaqil ishlar"
     ],
     "correctIndex": 2
   },
   {
     "n": 105,
-    "q": "Koʻrsatkichli tenglama tushunchasini berishdan oldin qanday ma’lumotlar berish kerak?",
+    "q": "Ko‘rsatkichli tenglama tushunchasini berishdan oldin qanday ma’lumotlar berish kerak?",
     "options": [
       "trigonometrik funksiya",
-      "Daraja, koʻrsatkichli funksiya",
+      "Daraja, ko‘rsatkichli funksiya",
       "Chiziqli tenglama va funksiya",
       "Logorifmik funksiya"
     ],
@@ -61,8 +61,8 @@ window.QUESTION_SECTION = {
     "n": 106,
     "q": "Metodik “masala” nima?",
     "options": [
-      "Matematik masalaga oʻxshash masala",
-      "Ma’lum metodik va oʻquv faoliyati orqali yechimi topiladigan masala",
+      "Matematik masalaga o‘xshash masala",
+      "Ma’lum metodik va o‘quv faoliyati orqali yechimi topiladigan masala",
       "Texnik mazmunli masala",
       "Tarbiya jarayonini jadallashtirishga qaratilgan masala"
     ],
@@ -70,10 +70,10 @@ window.QUESTION_SECTION = {
   },
   {
     "n": 107,
-    "q": "Maktab matematika kursida Matematik tushunshalar necha xil usulda kiritiladi?",
+    "q": "Maktab matematika kursida matematik tushunchalar necha xil usulda kiritiladi?",
     "options": [
       "2",
-      "https://yda.uznpu./start_yda_view.php?tester_id=355211102757&rqw=eba5f4e901ad58bdd0d768eec1b87818&lang=&qfn=4 34/59 08.02.2026, 15:02 _ 9",
+      "9",
       "11",
       "7"
     ],
@@ -81,7 +81,7 @@ window.QUESTION_SECTION = {
   },
   {
     "n": 108,
-    "q": "Umumiy oʻrta ta’lim maktablarida matematika oʻqitishning maqsadi nechta omil bilan belgilanadi?",
+    "q": "Umumiy o‘rta ta’lim maktablarida matematika o‘qitishning maqsadi nechta omil bilan belgilanadi?",
     "options": [
       "5",
       "3",
@@ -92,10 +92,10 @@ window.QUESTION_SECTION = {
   },
   {
     "n": 109,
-    "q": "8-sinf algebra darsida toʻla kvadrat tenglama qaysi metod orqali kiritiladi?",
+    "q": "8-sinf algebra darsida to‘la kvadrat tenglama qaysi metod orqali kiritiladi?",
     "options": [
       "deduktiv",
-      "abstrakt- deduktiv",
+      "abstrakt-deduktiv",
       "induktiv",
       "abstrakt-induktiv"
     ],
@@ -103,7 +103,7 @@ window.QUESTION_SECTION = {
   },
   {
     "n": 110,
-    "q": "Agar trapetsiyaning asoslari m:n kabi nisbatda boʻlsa, bir dioganalning ikkinchi dioganal bilan boʻlinadigan kesmalar nisbatini toping.",
+    "q": "Agar trapetsiyaning asoslari \\(m:n\\) kabi nisbatda bo‘lsa, bir diagonali ikkinchi diagonal bilan bo‘linadigan kesmalar nisbatini toping.",
     "options": [
       "2m:3n",
       "2n:m",
@@ -114,29 +114,29 @@ window.QUESTION_SECTION = {
   },
   {
     "n": 111,
-    "q": "Oʻqitishni tashkil qilishning qaysi shakli asosiy hisoblanadi?",
+    "q": "O‘qitishni tashkil qilishning qaysi shakli asosiy hisoblanadi?",
     "options": [
-      "Guruhli mashgʻulot",
-      "https://yda.uznpu./start_yda_view.php?tester_id=355211102757&rqw=eba5f4e901ad58bdd0d768eec1b87818&lang=&qfn=4 35/59 08.02.2026, 15:02 _ Individual mashgʻulot",
-      "Sinfdan tashqari mashgʻulotlar",
+      "Guruhli mashg‘ulot",
+      "Individual mashg‘ulot",
+      "Sinfdan tashqari mashg‘ulotlar",
       "Dars"
     ],
     "correctIndex": 3
   },
   {
     "n": 112,
-    "q": "Oʻrganilayotgan mavzuning chuqurroq anglab olish uchun nima qilish zarur?",
+    "q": "O‘rganilayotgan mavzuning chuqurroq anglab olish uchun nima qilish zarur?",
     "options": [
       "Darsni an’anaviy tashkil etish kerak",
-      "Oʻqituvchi va oʻquvchi oʻrtasida suxbat (dialog)",
-      "Darsni shunday tashkil qilish kerakki unda oʻquvchilar albatta ishtirok etsin",
-      "Quyilgan muammoni hal etilishiga qaratilgan muammoli vaziyatni tashkil etish va savollar majmuasidan foydalanish"
+      "O‘qituvchi va o‘quvchi o‘rtasida suhbat (dialog)",
+      "Darsni shunday tashkil qilish kerakki unda o‘quvchilar albatta ishtirok etsin",
+      "Muammoli vaziyatni tashkil etish va savollar majmuasidan foydalanish"
     ],
     "correctIndex": 1
   },
   {
     "n": 113,
-    "q": "Qavariq sakkiz burchakda jami nechta dioganal oʻtkazish mumkin?",
+    "q": "Qavariq sakkiz burchakda jami nechta diagonal o‘tkazish mumkin?",
     "options": [
       "21",
       "20",
@@ -149,9 +149,9 @@ window.QUESTION_SECTION = {
     "n": 114,
     "q": "Bilimlarni egallash uchun qanday vositalar kerak?",
     "options": [
-      "Oʻqitish vositalari",
+      "O‘qitish vositalari",
       "Kitoblar, bosma asosdagi daftarlar",
-      "Koʻrgazmali qurollar",
+      "Ko‘rgazmali qurollar",
       "Sxema, chizma, rasmlar"
     ],
     "correctIndex": 1
@@ -160,7 +160,7 @@ window.QUESTION_SECTION = {
     "n": 115,
     "q": "Barcha ta’lim vositalarini nechta turga ajratish mumkin?",
     "options": [
-      "2 turga https://yda.uznpu./start_yda_view.php?tester_id=355211102757&rqw=eba5f4e901ad58bdd0d768eec1b87818&lang=&qfn=4 36/59 08.02.2026, 15:02 _",
+      "2 turga",
       "1 turga",
       "3 turga",
       "4 turga"
@@ -169,33 +169,33 @@ window.QUESTION_SECTION = {
   },
   {
     "n": 116,
-    "q": "Quyidagi modellardan eng asosiysini koʻrsating?",
+    "q": "Quyidagi modellardan eng asosysini ko‘rsating?",
     "options": [
       "Darslik, bosma asosdagi daftar",
-      "Misol va masalalar toʻplami, ma’lumotnoma",
-      "metodik qoʻllanma, ma’lumotnoma",
-      "Topshiriqlar yozilgan kartochkalar, metodik qoʻllanma"
+      "Misol va masalalar to‘plami, ma’lumotnoma",
+      "metodik qo‘llanma, ma’lumotnoma",
+      "Topshiriqlar yozilgan kartochkalar, metodik qo‘llanma"
     ],
     "correctIndex": 0
   },
   {
     "n": 117,
-    "q": "Ta’lim jarayonida darslik qanday rol oʻynaydi?",
+    "q": "Ta’lim jarayonida darslik qanday rol o‘ynaydi?",
     "options": [
-      "Oʻtilgan mavzuni mustahkamlash",
-      "Oʻtilgan materialni umumlashtirish",
-      "Oʻquvchilarning bilim, koʻnikmalarining mustaqil oʻstirishga xizmat qiluvchi omillar",
-      "Oʻtilgan materialni chuqurlashtirish"
+      "O‘tilgan mavzuni mustahkamlash",
+      "O‘tilgan materialni umumlashtirish",
+      "O‘quvchilarning bilim, ko‘nikmalarining mustaqil o‘zlashtirishga xizmat qiluvchi omillar",
+      "O‘tilgan materialni chuqurlashtirish"
     ],
     "correctIndex": 2
   },
   {
     "n": 118,
-    "q": "Ogʻzaki metod bu....",
+    "q": "Og‘zaki metod bu....",
     "options": [
       "Suhbat va tushuntirishlar",
       "Muammoli suhbat",
-      "Tushuntirish, muammoli suhbat, evristik suxbat",
+      "Tushuntirish, muammoli suhbat, evristik suhbat",
       "Evristik metod"
     ],
     "correctIndex": 0
@@ -204,16 +204,16 @@ window.QUESTION_SECTION = {
     "n": 119,
     "q": "Amaliy metod – bu...",
     "options": [
-      "Mashqlarni bajarishda qoʻllaniladigan metod https://yda.uznpu./start_yda_view.php?tester_id=355211102757&rqw=eba5f4e901ad58bdd0d768eec1b87818&lang=&qfn=4 37/59 08.02.2026, 15:02 _",
-      "Amaliy ishlarda qoʻllaniladigan metod",
-      "Misollarni yechishda qoʻllaniladigan metod",
+      "Mashqlarni bajarishda qo‘llaniladigan metod",
+      "Amaliy ishlarda qo‘llaniladigan metod",
+      "Misollarni yechishda qo‘llaniladigan metod",
       "Mavjud predmetlar ustida mashqlar bajarish"
     ],
     "correctIndex": 1
   },
   {
     "n": 120,
-    "q": "Ta’lim toʻgʻrisidagi yangi qonun qachon qabul qilingan?",
+    "q": "Ta’lim to‘g‘risidagi yangi qonun qachon qabul qilingan?",
     "options": [
       "2017 y",
       "2020 y",
@@ -224,18 +224,18 @@ window.QUESTION_SECTION = {
   },
   {
     "n": 121,
-    "q": "Matematika oʻqitishdagi didaktik tamoyillarini koʻrsating.",
+    "q": "Matematika o‘qitishdagi didaktik tamoyillarni ko‘rsating.",
     "options": [
       "onglilik",
       "onglilik, ketma-ketlik",
-      "Ilmiylik, koʻrsatmalilik, onglilik, aktivlik, sistemalilik, puxta oʻzlashtirish ketma-ketlik",
+      "Ilmiylik, ko‘rsatmalilik, onglilik, aktivlik, sistemalilik, puxta o‘zlashtirish, ketma-ketlik",
       "Nazoratlilik"
     ],
     "correctIndex": 2
   },
   {
     "n": 122,
-    "q": "Xulosa chiqarish metodlarini koʻrsating.",
+    "q": "Xulosa chiqarish metodlarini ko‘rsating.",
     "options": [
       "Induksiya va deduksiya",
       "Umumlashtirish",
@@ -246,7 +246,7 @@ window.QUESTION_SECTION = {
   },
   {
     "n": 123,
-    "q": "Quyidagi ta’riflardan toʻgʻrilarini ajrating.1) Isbotlash-deduktiv xulosa chiqarish zanjiri demakdir. Matematika 2) Noma’lumlardan ma’lumlarga tomon izlash metodi analiz deyiladi. o‘qitish metodikasi(5), 3) Toʻgʻridan teskariga yurish sintez deyiladi. 4) Umumiydan xususiyga oʻtish Induksiya deyiladi. https://yda.uznpu./start_yda_view.php?tester_id=355211102757&rqw=eba5f4e901ad58bdd0d768eec1b87818&lang=&qfn=4 38/59 08.02.2026, 15:02 _",
+    "q": "Quyidagi ta’riflardan to‘g‘rilarini ajrating.\\n1) Isbotlash — deduktiv xulosa chiqarish zanjiri.\\n2) Noma’lumlardan ma’lumlarga tomon izlash metodi analiz deyiladi.\\n3) To‘g‘ridan teskariга yurish sintez deyiladi.\\n4) Umumiydan xususiyga o‘tish induksiya deyiladi.",
     "options": [
       "1,4",
       "1,4",
@@ -257,7 +257,7 @@ window.QUESTION_SECTION = {
   },
   {
     "n": 124,
-    "q": "Oʻqitishning ilmiy izlanish metodlari asosan nechta turga boʻlinadi.",
+    "q": "O‘qitishning ilmiy izlanish metodlari asosan nechta turga bo‘linadi?",
     "options": [
       "2",
       "6",
@@ -279,7 +279,7 @@ window.QUESTION_SECTION = {
   },
   {
     "n": 126,
-    "q": "Matematika darslarida matematik masalaning roli va oʻrni nechta bosqichda amalga oshiriladi.",
+    "q": "Matematika darslarida matematik masalaning roli va o‘rni necha bosqichda amalga oshiriladi?",
     "options": [
       "7",
       "12",
@@ -290,23 +290,23 @@ window.QUESTION_SECTION = {
   },
   {
     "n": 127,
-    "q": "Matematika kabineti qanday boʻlimlardan iborat boʻlishi kerak? https://yda.uznpu./start_yda_view.php?tester_id=355211102757&rqw=eba5f4e901ad58bdd0d768eec1b87818&lang=&qfn=4 39/59 08.02.2026, 15:02 _",
+    "q": "Matematika kabineti qanday bo‘limlardan iborat bo‘lishi kerak?",
     "options": [
-      "Toʻgaraklar, qoʻllanmalar tayyorlash",
+      "To‘garaklar, qo‘llanmalar tayyorlash",
       "qiziqarli savol-javoblar, maqolalar tayyorlash",
-      "Oʻquv metodika, oʻquv-kutubxona, oʻquv-ishlab chiqarish jamoat ishi",
-      "Vertuval boʻlish"
+      "O‘quv metodika, o‘quv-kutubxona, o‘quv-ishlab chiqarish jamoat ishi",
+      "Vertuval bo‘lish"
     ],
     "correctIndex": 2
   },
   {
     "n": 128,
-    "q": "Oʻnli kasr tushunchasi qachon va qaysi olim tomonidan kiritilgan?",
+    "q": "O‘nli kasr tushunchasi qachon va qaysi olim tomonidan kiritilgan?",
     "options": [
       "XVIII asrda Gauss",
-      "VII – asrda Ibn Sino",
+      "VII-asrda Ibn Sino",
       "XV asrda Ali Qushchi",
-      "XIV asrda Mirzo Ulugʻbek"
+      "XIV asrda Mirzo Ulug‘bek"
     ],
     "correctIndex": 2
   },
@@ -323,7 +323,7 @@ window.QUESTION_SECTION = {
   },
   {
     "n": 130,
-    "q": "Irratsional son tushunchasi qaysi sinfda oʻqitilmaydi?",
+    "q": "Irratsional son tushunchasi qaysi sinfda o‘qitilmaydi?",
     "options": [
       "5,6,7 sinf",
       "7-8 sinf",
@@ -334,14 +334,14 @@ window.QUESTION_SECTION = {
   },
   {
     "n": 131,
-    "q": "Bir tomonlama fikrlash metodi qanday metod sanaladi? https://yda.uznpu./start_yda_view.php?tester_id=355211102757&rqw=eba5f4e901ad58bdd0d768eec1b87818&lang=&qfn=4 40/59 08.02.2026, 15:02 _",
+    "q": "Isbotsiz qabul qilinadigan matematik hukm?",
     "options": [
-      "Konkretlashtirish",
-      "Induksiya",
-      "Analiz",
-      "Sintez"
+      "Teorema",
+      "Aksioma",
+      "Lemma",
+      "Natija"
     ],
-    "correctIndex": 0
+    "correctIndex": 1
   },
   {
     "n": 132,
@@ -358,40 +358,40 @@ window.QUESTION_SECTION = {
     "n": 133,
     "q": "Sinf-dars sistemasida asosan qaysi ilmiy metodlardan foydalaniladi?",
     "options": [
-      "Induksiya, deduktsiya, abstraktsiya, konkretlashtirish, umumlashtirish",
+      "Induksiya, deduksiya, abstraksiya, konkretlashtirish, umumlashtirish",
       "Suhbat, dialog",
       "Analiz, sintez",
-      "Abstraktsiya konkretlashtirish, umumlashtirish"
+      "Abstraksiya, konkretlashtirish, umumlashtirish"
     ],
     "correctIndex": 0
   },
   {
     "n": 134,
-    "q": "Ikkita oʻxshash uchburchak yuzlarining nisbati nimaga teng?",
+    "q": "Ikkita o‘xshash uchburchak yuzlarining nisbati nimaga teng?",
     "options": [
-      "Oʻxshashlik koeffitsentiga",
+      "O‘xshashlik koeffitsientiga",
       "Ularning mos tomonlarining nisbatiga",
       "Ularning perimetrlarining nisbatiga",
-      "Oʻxshashlik koeffitsentining kvadratiga"
+      "O‘xshashlik koeffitsientining kvadratiga"
     ],
     "correctIndex": 3
   },
   {
     "n": 135,
-    "q": "Matematik hukmning turlarini koʻrsating. https://yda.uznpu./start_yda_view.php?tester_id=355211102757&rqw=eba5f4e901ad58bdd0d768eec1b87818&lang=&qfn=4 41/59 08.02.2026, 15:02 _",
+    "q": "Matematik hukmning turlarini ko‘rsating.",
     "options": [
       "aniq teorema, chala teorema",
       "teskari teorema, unga qarama-qarshi teorema",
       "unga qarama-qarshi teorema",
-      "toʻgʻri, teskari, toʻgʻri teoremaga qarama-qarshi, teskari teoremaga qarama-qarshi"
+      "to‘g‘ri, teskari, to‘g‘ri teoremaga qarama-qarshi, teskari teoremaga qarama-qarshi"
     ],
     "correctIndex": 3
   },
   {
     "n": 136,
-    "q": "Teorema. Agar uchburchakning burchaklari oʻzaro teng boʻlsa, u holda bu burchaklar qarshisida teng tomonlar yotadi. Bu qaysi teorema turiga kiradi?",
+    "q": "Teorema. Agar uchburchakning burchaklari o‘zaro teng bo‘lsa, u holda bu burchaklar qarshisida teng tomonlar yotadi. Bu qaysi teorema turiga kiradi?",
     "options": [
-      "toʻgʻri teorema",
+      "to‘g‘ri teorema",
       "Teskari teorema",
       "aniq teorema",
       "teorema"
@@ -416,7 +416,7 @@ window.QUESTION_SECTION = {
       "Analogiya",
       "induksiya",
       "deduksiya",
-      "sintez https://yda.uznpu./start_yda_view.php?tester_id=355211102757&rqw=eba5f4e901ad58bdd0d768eec1b87818&lang=&qfn=4 42/59 08.02.2026, 15:02 _"
+      "sintez"
     ],
     "correctIndex": 3
   },
@@ -425,26 +425,26 @@ window.QUESTION_SECTION = {
     "q": "Tenglama tushunchasi qaysi metod orqali kiritiladi?",
     "options": [
       "konkret-induktiv",
-      "аnаliz",
+      "analiz",
       "Analogiya",
-      "abstraktsiya"
+      "abstraksiya"
     ],
     "correctIndex": 0
   },
   {
     "n": 140,
-    "q": "Quyidagi tasdiqlardan qaysi biri toʻgʻri?",
+    "q": "Quyidagi tasdiqlardan qaysi biri to‘g‘ri?",
     "options": [
-      "Ikkita uchburchakning bittadan burchaklari teng va ikkitadan tomonlari proportsional boʻlsa, ular oʻxshash boʻladi",
-      "uchburchaklardan birining ikkita burchagi ikkinchisining ikkita burchagiga mos ravishda teng boʻlsa, ular oʻxshash boʻladi",
-      "Ikkita uchburchakning bittadan burchaklari teng va bittadan tomonlari proportsional boʻlsa ular oʻxshash boʻladi",
-      "uchburchaklardan birining ikkita tomoni ikkinchisining ikkita tomoniga mos ravishda teng boʻlsa, ular oʻxshash boʻladi"
+      "Ikki uchburchakning bittadan burchaklari teng va ikkita tomonlari proportsional bo‘lsa, ular o‘xshash bo‘ladi",
+      "uchburchaklardan birining ikkita burchagi ikkinchisining ikkita burchagiga mos ravishda teng bo‘lsa, ular o‘xshash bo‘ladi",
+      "Ikki uchburchakning bittadan burchaklari teng va bittadan tomonlari proportsional bo‘lsa ular o‘xshash bo‘ladi",
+      "uchburchaklardan birining ikkita tomoni ikkinchisining ikkita tomoniga mos ravishda teng bo‘lsa, ular o‘xshash bo‘ladi"
     ],
     "correctIndex": 1
   },
   {
     "n": 141,
-    "q": "Matematika oʻqitish metodikasi asosiy nechta boʻlimdan iborat?",
+    "q": "Matematika o‘qitish metodikasi asosiy nechta bo‘limdan iborat?",
     "options": [
       "2",
       "3",
@@ -455,18 +455,18 @@ window.QUESTION_SECTION = {
   },
   {
     "n": 142,
-    "q": "Koʻrsatkichli tenglama tushunchasini berishdan oldin qanday ma’lumotlar berish kerak?",
+    "q": "Ko‘rsatkichli tenglama tushunchasini berishdan oldin qanday ma’lumotlar berish kerak?",
     "options": [
       "chiziqli tenglama",
       "Logarifmik funksiya",
-      "Daraja, koʻrsatkichli funksiya https://yda.uznpu./start_yda_view.php?tester_id=355211102757&rqw=eba5f4e901ad58bdd0d768eec1b87818&lang=&qfn=4 43/59 08.02.2026, 15:02 _",
+      "Daraja, ko‘rsatkichli funksiya",
       "chiziqli tenglama va funksiya"
     ],
     "correctIndex": 2
   },
   {
     "n": 143,
-    "q": "Trigonometrik ifodalar dastlab qaysi sinf darsligida kiritilgan?",
+    "q": "Trigonometriik ifodalar dastlab qaysi sinf darsligida kiritilgan?",
     "options": [
       "9 sinf",
       "10 sinf",
@@ -477,18 +477,18 @@ window.QUESTION_SECTION = {
   },
   {
     "n": 144,
-    "q": "Toʻgʻrisini toping. Agar ikkita uchburchak oʻxshash boʻlsa, ularning...",
+    "q": "To‘g‘risini toping. Agar ikkita uchburchak o‘xshash bo‘lsa, ularning…",
     "options": [
-      "yuzlari teng boʻladi",
-      "burchaklari proporsional boʻladi",
-      "tomonlari teng boʻladi",
-      "tomonlari proporsional boʻladi"
+      "yuzlari teng bo‘ladi",
+      "burchaklari proporsional bo‘ladi",
+      "tomonlari teng bo‘ladi",
+      "tomonlari proporsional bo‘ladi"
     ],
     "correctIndex": 3
   },
   {
     "n": 145,
-    "q": "Matematik ob’ektdagi narsalarning xossalari va ularning oʻzaro vaziyatlarini belgilovchi metod qanday metod deyiladi?",
+    "q": "Matematik ob’ektdagi narsalarning xossalari va ularning o‘zaro vaziyatlarini belgilovchi metod qanday metod deyiladi?",
     "options": [
       "Tajriba",
       "Umumlashtirish",
@@ -503,7 +503,7 @@ window.QUESTION_SECTION = {
     "options": [
       "abstraktsiya, konkretlashtirish, analogiya",
       "tajriba va kuzatish, taqqoslash, analiz va sintez, umumlashtirish, abstraktsiya, konkretlashtirish",
-      "https://yda.uznpu./start_yda_view.php?tester_id=355211102757&rqw=eba5f4e901ad58bdd0d768eec1b87818&lang=&qfn=4 44/59 08.02.2026, 15:02 _ tajriba va kuzatish, taqqoslash, deduktsiya",
+      "tajriba va kuzatish, taqqoslash, deduktsiya",
       "analiz va sintez, induktsiya"
     ],
     "correctIndex": 1
@@ -512,16 +512,16 @@ window.QUESTION_SECTION = {
     "n": 147,
     "q": "Teoremalarning isbotlash usullari asosan qanday turlarga ajratiladi?",
     "options": [
-      "Teskarisidan faraz qilish usuli bilan isbotlash, toʻgʻri isbotlash",
+      "Teskari(sidan) faraz qilish usuli bilan isbotlash, to‘g‘ri isbotlash",
       "teskarisidan isbotlash",
-      "toʻgʻri isbotlash",
+      "to‘g‘ri isbotlash",
       "Teskarisidan faraz qilish"
     ],
     "correctIndex": 0
   },
   {
     "n": 148,
-    "q": "Matematik hukm umumiy holda nechta turga boʻlinadi?",
+    "q": "Matematik hukm umumiy holda nechta turga bo‘linadi?",
     "options": [
       "9",
       "3",
@@ -532,11 +532,11 @@ window.QUESTION_SECTION = {
   },
   {
     "n": 149,
-    "q": "x 4 +5x3 + 2x2+5x+1 = 0 ratsional ildizlarini toping.",
+    "q": "\\(x^4+5x^3+2x^2+5x+1=0\\) ratsional ildizlarini toping.",
     "options": [
-      "Ǿ",
-      "±1",
-      "1",
+      "\\(\\varnothing\\)",
+      "\\(\\pm 1\\)",
+      "-1",
       "1"
     ],
     "correctIndex": 0
@@ -545,12 +545,12 @@ window.QUESTION_SECTION = {
     "n": 150,
     "q": "Kvadrat tenglama qaysi metod orqali kiritilgan?",
     "options": [
-      "konkret – induktiv",
+      "konkret–induktiv",
       "Sintez",
-      "https://yda.uznpu./start_yda_view.php?tester_id=355211102757&rqw=eba5f4e901ad58bdd0d768eec1b87818&lang=&qfn=4 45/59 08.02.2026, 15:02 _ analiz va sintez",
+      "analiz va sintez",
       "Abstrakt-deduktiv"
     ],
     "correctIndex": 3
   }
-]
+  ]
 };
