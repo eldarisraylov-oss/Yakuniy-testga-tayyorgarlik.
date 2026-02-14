@@ -1,0 +1,61 @@
+/* =======================================================================
+   ASN — Savollar bazasi
+   Part: 101–150
+   ======================================================================= */
+
+   window.questions = window.questions || [];
+
+   window.questions.push(
+     {"id":101,"question":"Berilgan $\\vec a=(1,5)$, $\\vec b=(3,-1)$, $\\vec c=(0,1)$ vektorlar. $\\alpha$ ning qanday qiymatida $\\vec P=\\vec a+\\alpha\\vec b$ va $\\vec q=\\vec a-\\vec c$ vektorlar kollinear bo'ladi?","options":["$\\alpha=3$","$\\alpha=\\frac{1}{4}$","$\\alpha=\\frac{1}{13}$","$\\alpha=-\\frac{2}{3}$"],"answer":"C"},
+     {"id":102,"question":"Tekislikda $\\vec a=(3,-2)$, $\\vec b=(-2,1)$, $\\vec c=(7,4)$ vektorlar berilgan. $\\vec c$ vektorning $\\vec a$ va $\\vec b$ vektorlar orqali chiziqli ifodasini aniqlang.","options":["$\\vec c=-11\\vec a+76\\vec b$","$\\vec c=-15\\vec a-26\\vec b$","$\\vec c=2\\vec a-5\\vec b$","$\\vec c=4\\vec a-9\\vec b$"],"answer":"B"},
+     {"id":103,"question":"$\\vec a=-4\\vec i+2\\vec j+\\vec k$ vektor yo'nalishidagi birlik vektor koordinatalarini aniqlang.","options":["$\\left(-\\frac{4}{\\sqrt{21}},\\;\\frac{2}{\\sqrt{21}},\\;\\frac{1}{\\sqrt{21}}\\right)$","$\\left(-\\frac{2}{3\\sqrt5},\\;\\frac{3\\sqrt3}{3\\sqrt5},\\;\\frac{1}{3\\sqrt5}\\right)$","$\\left(-\\frac{4}{8},\\;\\frac{3\\sqrt3}{3\\sqrt5},\\;\\frac{1}{8}\\right)$","$\\left(-\\frac{2}{\\sqrt{11}},\\;\\frac{3\\sqrt3}{2\\sqrt{11}},\\;\\frac{1}{2\\sqrt{11}}\\right)$"],"answer":"A"},
+     {"id":104,"question":"Uchlari $A(2,5)$, $B(1,-1)$, $C(1,7)$ nuqtalarda bo'lgan uchburchakning $C$ uchidan o'tkazilgan medianasi uzunligini aniqlang.","options":["$14$","$\\sqrt{101}$","$\\sqrt{74}$","$\\frac{\\sqrt{105}}{3}$"],"answer":"B"},
+     {"id":105,"question":"Qutb koordinatalarida berilgan $N\\left(6,\\frac{\\pi}{2}\\right)$ nuqtaning Dekart koordinatalarini aniqlang.","options":["$N(0,6)$","$N(1,-3)$","$N(0,8)$","$N(3,-4)$"],"answer":"A"},
+     {"id":106,"question":"Ordinata o'qida $A(-1,3)$ nuqtadan $6$ birlik masofada joylashgan nuqtaning koordinatasini aniqlang.","options":["$M_1(0,4)$, $M_2(0,-4)$","$M_1(0,3+\\sqrt{35})$, $M_2(0,3-\\sqrt{35})$","$M_1(0,2-\\sqrt{35})$, $M_2(0,2+\\sqrt{35})$","$M_1(0,-7)$, $M_2(0,7)$"],"answer":"B"},
+     {"id":107,"question":"Markazi $C(0,2)$ nuqtada bo'lib, $Ox$ o'qqa urinuvchi figura tenglamasini aniqlang.","options":["$(x-2)^2+y^2=4$","$(x-1)^2+(y-2)^2=4$","$x^2+y^2=4$","$x^2+(y-2)^2=4$"],"answer":"D"},
+     {"id":108,"question":"$M_0(2,1)$ nuqtadan o'tib $2x+3y+4=0$ to'g'ri chiziqqa parallel bo'lgan to'g'ri chiziq tenglamasini aniqlang.","options":["$2x+3y-7=0$","$2x+3y-4=0$","$3x-2y+1=0$","$x-2y+1=0$"],"answer":"A"},
+     {"id":109,"question":"$M_0(2,1)$ nuqtadan o'tib $2x+3y+4=0$ to'g'ri chiziqqa perpendikulyar bo'lgan to'g'ri chiziq tenglamasini aniqlang.","options":["$3x+2y-4=0$","$2x-4y+5=0$","$3x-2y-4=0$","$-3x-2y-4=0$"],"answer":"C"},
+     {"id":110,"question":"$x-y+3=0$ va $2x-y+4=0$ to'g'ri chiziqlarning kesishgan nuqtasi koordinatalarini aniqlang.","options":["$M(-2,1)$","$M(-1,-2)$","$M(-1,2)$","$M(-2,3)$"],"answer":"C"},
+     {"id":111,"question":"O'q simmetriyasi nima bilan aniqlanadi?","options":["Faqat bir juft mos nuqtni berilishi bilan","Simmetriya o'qi yoki bir juft mos nuqtaning berilishi bilan","Faqat simmetriya o'qining berilishi bilan","Bitta vektorning berilishi bilan"],"answer":"B"},
+     {"id":112,"question":"Giperbola uchlari orasidagi masofa $8$, fokuslari orasidagi masofa $\\rho(F_1,F_2)=10$ ga teng bo'lsa, giperbola tenglamasini tuzing.","options":["$x^2-\\frac{y^2}{16}=1$","$\\frac{x^2}{16}-\\frac{y^2}{9}=1$","$\\frac{x^2}{16}-y^2=1$","$x^2+\\frac{y^2}{16}=1$"],"answer":"B"},
+     {"id":113,"question":"$M(-2,4)$ nuqtadan $2x-3y+6=0$ to'g'ri chiziqqa parallel bo'lib o'tuvchi to'g'ri chiziq tenglamasini tuzing.","options":["$\\frac{x+2}{3}=\\frac{y-4}{2}$","$3y-2x+14=0$","$2x-5y+16=0$","$\\frac{x-2}{3}=\\frac{y+4}{2}$"],"answer":"A"},
+     {"id":114,"question":"$x^2-4=0$ tenglama qanday chiziqni aniqlaydi.","options":["Ikki parallel to'g'ri chiziq","Aylana","O'zaro kesishuvchi to'g'ri chiziqlar","Giperbola"],"answer":"A"},
+     {"id":115,"question":"$A(2,3)$ va $B(-1,2)$ berilgan $|AB|$ kesmani $\\frac{1}{2}$ nisbatda bo'luvchi nuqtaning koordinatalarini toping.","options":["$C\\left(1,\\frac{8}{3}\\right)$","$C\\left(2\\frac{1}{3},2\\frac{2}{3}\\right)$","$C\\left(\\frac{1}{2},\\frac{5}{2}\\right)$","$C(0,1)$"],"answer":"A"},
+     {"id":116,"question":"$x^2+y^2+2y-8=0$ tenglama bilan aniqlanuvchi nuqtalar to'plami qanday chiziqni ifodalaydi?","options":["Markazi $(0,1)$ da bo'lgan ellips","Markazi $S(0,-1)$ da, radiusi $R=3$ ga teng bo'lgan aylana","Markazi $(1,0)$ da bo'lgan giperbola","Parabola"],"answer":"B"},
+     {"id":117,"question":"$3x+4y-24=0$ to'g'ri chiziqning koordinata o'qlari orasidagi joylashgan kesmaning uzunligini hisoblang.","options":["$|AB|=4$","$|AB|=10$","$|AB|=100$","$|AB|=5$"],"answer":"B"},
+     {"id":118,"question":"Ekstsentrikiteti $\\varepsilon=\\frac{\\sqrt3}{3}$, katta yarim o'qi $a=3$ berilgan bo'lsa, ellips tenglamasini tuzing.","options":["$\\frac{x^2}{2}+\\frac{y^2}{3}=1$","$\\frac{x^2}{\\sqrt3}+\\frac{y^2}{3}=1$","$\\frac{x^2}{3}+\\frac{y^2}{9}=1$","$\\frac{x^2}{9}+\\frac{y^2}{6}=1$"],"answer":"D"},
+     {"id":119,"question":"Uchlari $O(0,0)$, $A(8,0)$ va $B(0,6)$ nuqtalarda bo'lgan uchburchakda $|OC|$ mediana uzunligini aniqlang.","options":["$|OC|=4$","$|OC|=5$","$|OC|=3$","$|OC|=2\\sqrt2$"],"answer":"B"},
+     {"id":120,"question":"$\\begin{cases}3x-4y+11=0\\; (\\ell_1)\\\\4x-y-7=0\\; (\\ell_2)\\end{cases}$ chiziqlarning kesishish nuqtasini toping.","options":["$A(0,0)$","$A(-3,-5)$","$A(3,5)$","$A(5,3)$"],"answer":"C"},
+     {"id":121,"question":"$x^2=-4y$ parabolaning direktrisa tenglamasini yozing.","options":["$y=3$","$y=1$","$y=-1$","$y=2$"],"answer":"B"},
+     {"id":122,"question":"$Ox$ o'qida $B(0,0,4)$ nuqtadan $5$ birlik masofada turgan nuqtani toping?","options":["$(4,0,0),\\;(-4,0,0)$","$(5,0,0),\\;(-5,0,0)$","$(0,4,0),\\;(0,-4,0)$","$(3,0,0),\\;(-3,0,0)$"],"answer":"D"},
+     {"id":123,"question":"$M_0(3,-1,7)$ dan o'tib $\\frac{x+1}{2}=\\frac{y-3}{-4}=\\frac{z-1}{5}$ to'g'ri chiziqqa parallel bo'lgan to'g'ri chiziq kanonik tenglamasini tuzing.","options":["$\\frac{x-2}{4}=\\frac{y+1}{2}=\\frac{z-1}{3}$","$\\frac{x-1}{3}=\\frac{y+1}{-4}=\\frac{z-5}{1}$","$\\frac{x-2}{-4}=\\frac{y-3}{2}=\\frac{z-1}{5}$","$\\frac{x-3}{2}=\\frac{y+1}{-4}=\\frac{z-7}{5}$"],"answer":"D"},
+     {"id":124,"question":"$\\begin{cases}x=0\\\\y=0\\end{cases}$ va $\\begin{cases}y=0\\\\z=0\\end{cases}$ sistemalarning har biri qanday chiziqni ifoda qiladi?","options":["$x-y=0$ va $y-z=0$ chiziq","$x=0$ va $y=0$ chiziq","$x+y=0$ chiziq, $y+z=0$ chiziq","$(Oz)$ o'qi, $(Ox)$ o'qi"],"answer":"D"},
+   
+     {"id":125,"question":"Agar |a|=2, |b|=3 va a ⟂ b bo‘lsa (5a+3b)(2a−b) ko‘paytmani hisoblang.","options":["5","9","12","13"],"answer":"D"},
+     {"id":126,"question":"Quyidagi to‘g‘ri chiziqlarni o‘zaro vaziyatini aniqlang: (x−2)/2 = (y−1)/1 = (z−1)/(-1) va (x+4)/2 = (y−2)/3 = (z+2)/2","options":["Parallel","O‘zaro perpendikulyar","Ustma-ust tushadi","Ayqash"],"answer":"D"},
+     {"id":127,"question":"2x−y+z−4=0, x+y−z=0, 2x−y+3z−6=0 tekisliklarning kesishish nuqtasini aniqlang.","options":["M(2,1,1)","M(1,0,0)","M(4/3, −1/3, 1)","M(2,0,1)"],"answer":"C"},
+     {"id":128,"question":"a=(1,0,0), b=(0,−2,0), c=(0,0,3) vektorlar aralash ko‘paytmasini toping.","options":["−3","0","2","3"],"answer":"A"},
+     {"id":129,"question":"Sferaning AB diametrining uchlari A(1,−2,3) va B(0,1,−1) ni bilgan holda markazi C nuqtani toping.","options":["C(1/2, 1/2, 1)","C(1/2, −1/2, 1)","C(0, −1/2, 1)","C(1/2, 1/2, −1)"],"answer":"B"},
+     {"id":130,"question":"3x+5y+z−6=0 tekislikning (XOY) tekislik bilan kesishishidan hosil bo‘lgan to‘g‘ri chiziqning umumiy tenglamalarini yozing.","options":["{3x+5y+z−6=0; y=0}","{3x+5y+z−6=0; z=0}","{3x+5y+z−6=0; x=0}","{3x+z−6=0; x+z=0}"],"answer":"B"},
+     {"id":131,"question":"x^2/5 − y^2/4 = 6z sirtni y+6=0 tekislik qanday chiziq bilan kesadi, shu chiziq tenglamasini toping.","options":["Aylana: (x−5)^2+(y+4)^2=36","Parabola: x^2−45=30z","Giperbola: x^2/4 − y^2/5 = 1","Ellips: x^2/5 + y^2/4 = 1"],"answer":"B"},
+     {"id":132,"question":"L to‘g‘ri chiziq va Π tekislikning kesishish nuqtasini toping: (x−1)/1 = (y+1)/(−2) = z/6, 2x+3y+z−1=0.","options":["M(1, −3, 6)","M(2, −3, 5)","M(2, 0, 6)","M(2, −3, 6)"],"answer":"D"},
+     {"id":133,"question":"Uchlari A(2,−1,1), B(5,5,4), C(3,2,−1), D(4,1,3) nuqtalarda bo‘lgan tetraedr hajmini toping.","options":["V = 24 kub.b","V = 8 kub.b","V = 3 kub.b","V = 56 kub.b"],"answer":"C"},
+     {"id":134,"question":"M1(7,2,−3) va M2(5,6,−4) nuqtalardan o‘tib, Ox o‘qqa parallel bo‘lgan tekislik tenglamasini aniqlang.","options":["2y+4z+10=0","y+4z+5=0","y+4z+10=0","y+z+10=0"],"answer":"C"},
+     {"id":135,"question":"M1(3,−2,−7) nuqtadan o‘tib, 2x−3z+5=0 tekislikka parallel tekislik tenglamasini tuzing.","options":["x−3y−27=0","2x−3y−27=0","2x−3z−27=0","2y−3z−27=0"],"answer":"C"},
+     {"id":136,"question":"x^2/2 + z^2/3 = y sirtni x−2=0 tekislik bilan kesimini toping.","options":["To‘g‘ri chiziq","Parabola","Ellips","Giperbola"],"answer":"B"},
+     {"id":137,"question":"Kvadrika va to‘g‘ri chiziqning kesishish nuqtasini toping: x1^2−x2^2+2x1x2−2x3x4+4x2+6x4−10=0, (x1−2) = (x2+1)/2 = (x3+2) = (x4−1)/(−2)","options":["(3,2,−1,1) va (2,0,0,1)","(3,1,−1,−1) va (1,2,−2,3)","(3,2,−1,1) va (2,0,0,0)","(3,1,−1,1) va (1,−3,−3,3)"],"answer":"D"},
+     {"id":138,"question":"E5 fazoda M(3,2,−1,5,0) nuqtadan o‘tib, {x1=3−2t, x2=4+2t, x3=5+4t, x4=−2−t, x5=1+5t} to‘g‘ri chiziqqa perpendikulyar bo‘lgan gipertekislik tenglamasini tuzing.","options":["2x1+4x3−x4+5x5+11=0","2x1+3x2+4x3−x4+5x5+11=0","2x1+2x2+4x3−x4+5x5+11=0","2x1+2x2+4x3−x4+4x5+11=0"],"answer":"C"},
+     {"id":139,"question":"Matritsasi [[1,5],[5,2]] bo‘lgan kvadratik formani tuzing.","options":["x1^2 + x1x2 + 2x2^2","x1^2 + 2x1x2 + 2x2^2","x1^2 + 10x1x2 + 2x2^2","x1^2 + 10x1x2 + x2^2"],"answer":"C"},
+     {"id":140,"question":"O‘lchovlari teng bo‘lgan ikkita tekislik parallel bo‘lib, kamida bitta umumiy nuqtaga ega bo‘lsa, ular…","options":["Kongruent","Ustma-ust tushadi","Ayqash","To‘g‘ri chiziq bo‘ylab kesishadi"],"answer":"B"},
+     {"id":141,"question":"M(1,4,−5,3,2) nuqtadan 3x1−x2+2x3−x4+x5−3=0 gipertekislikkacha masofani toping.","options":["3","15/4","15/8","15/2"],"answer":"A"},
+     {"id":142,"question":"3x−y+5=0 va x+3y−4=0 chiziqlar orasidagi burchakni toping.","options":["60°","30°","45°","90°"],"answer":"D"},
+     {"id":143,"question":"Ellipsning direktrisa tenglamasini ko‘rsating.","options":["x=±a","x=±a/b","x=±e","x=±a/e"],"answer":"D"},
+     {"id":144,"question":"a=(2,3,1), b=(5,6,4) vektorlarga qurilgan parallelogramm yuzasini toping.","options":["√2","−18√2","18","√54"],"answer":"D"},
+     {"id":145,"question":"x′=2x+3y+5, y′=4x−3y−2 affin almashtirishda A(5,2) nuqta qanday nuqtaga o‘tadi?","options":["A′(21,12)","A′(21,−12)","A′(−21,−12)","A′(−21,12)"],"answer":"A"},
+     {"id":146,"question":"(x−1)/2 + (y−2)/3 + z/4 = 0 to‘g‘ri chiziqqa perpendikulyar bo‘lgan va O(0,0,0) nuqtadan o‘tuvchi tekislik tenglamasini yozing.","options":["2x+3y+4z=0","2x+3y−4z=0","−2x+3y+4z=0","2x−3y+4z=0"],"answer":"A"},
+     {"id":147,"question":"(x−1)/(−1) = (y−2)/2 = (z+3)/5 to‘g‘ri chiziq va x−2y+z−5=0 tekislik orasidagi burchakni toping.","options":["60°","30°","45°","90°"],"answer":"D"},
+     {"id":148,"question":"Ellipsoidning urinma tekislik tenglamasini ko‘rsating.","options":["x0/a^2 − yy0/b^2 − zz0/c^2 = 1","xx0/a^2 + yy0/b^2 + zz0/c^2 = 1","xx0/a^2 + yy0/b^2 + zz0/c^2 = 0","xx0/a^2 + yy0/b^2 − zz0/c^2 = 1"],"answer":"B"},
+     {"id":149,"question":"Tekisliklarning perpendikulyar bo‘lish shartini ko‘rsating.","options":["A1A2 + B1B2 + C1C2 = 0","A1A2 + C1C2 = 0","A1A2 − B1B2 − C1C2 = 0","A1A2 − C1C2 = 0"],"answer":"A"},
+     {"id":150,"question":"x^2 + 3y^2 − 4xz − 2yz + z − 6 = 0 sirtning z=0 tekislik bilan kesimini toping.","options":["x^2/4 + y^2/2 = 1","x^2/2 + y^2/6 = 1","x^2/6 + y^2/2 = 1","x^2/6 − y^2/4 = 1"],"answer":"C"}
+   );
+   
