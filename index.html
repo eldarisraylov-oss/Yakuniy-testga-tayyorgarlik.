@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Test - Umumiy psixologiya</title>
+  <title>Test - Offline</title>
 
   <style>
     :root{
@@ -201,7 +201,9 @@
   </div>
 
   <script>
-    // 1) FANLAR RO‘YXATI (HAMMASI QOLADI)
+    // ==========================================================
+    // 1) FANLAR RO‘YXATI
+    // ==========================================================
     const SUBJECTS = [
       {
         id: "matematik_analiz_metodika",
@@ -251,10 +253,25 @@
           { id:"bolim3_101-150", name:"101–150 savollar", file:"questions/umumiy_psixologiya/bolim3_101-150.js" },
           { id:"bolim4_151-211", name:"151–211 savollar", file:"questions/umumiy_psixologiya/bolim4_151-211.js" }
         ]
+      },
+
+      // ✅ YANGI FAN: ASN
+      {
+        id: "asn",
+        name: "Algebra va sonlar nazariyasi",
+        description: "200 ta savol (4 bo‘lim).",
+        sections: [
+          { id:"bolim_1-50", name:"1–50 savollar", file:"questions/asn/bolim_1-50.js" },
+          { id:"bolim_51-100", name:"51–100 savollar", file:"questions/asn/bolim_51-100.js" },
+          { id:"bolim_101-150", name:"101–150 savollar", file:"questions/asn/bolim_101-150.js" },
+          { id:"bolim_151-200", name:"151–200 savollar", file:"questions/asn/bolim_151-200.js" },
+        ]
       }
     ];
 
+    // ==========================================================
     // 2) STATE
+    // ==========================================================
     let currentSubject = null;
     let currentSection = null;
 
@@ -265,13 +282,15 @@
     // rejim: "normal" yoki "random"
     let currentMode = "normal";
 
-    // Savollar listi (oddiyda original, randomda aralashtirilgan)
+    // Savollar listi
     let activeQuestions = [];
 
     // javoblar saqlanadi: { [index]: { chosenIndex, isCorrect } }
     let answersMap = {};
 
+    // ==========================================================
     // 3) ELEMENTS
+    // ==========================================================
     const screenSubjects = document.getElementById("screenSubjects");
     const screenSections = document.getElementById("screenSections");
     const screenMode = document.getElementById("screenMode");
@@ -299,7 +318,9 @@
     const btnNext = document.getElementById("btnNext");
     const btnPrev = document.getElementById("btnPrev");
 
+    // ==========================================================
     // 4) HELPERS
+    // ==========================================================
     function showScreen(name){
       screenSubjects.classList.add("hidden");
       screenSections.classList.add("hidden");
@@ -352,17 +373,74 @@
       });
     }
 
+    function normalizeAnswerToIndex(ans){
+      if(typeof ans === "number") return ans;
+
+      if(typeof ans === "string"){
+        const a = ans.trim().toUpperCase();
+        if(a === "A") return 0;
+        if(a === "B") return 1;
+        if(a === "C") return 2;
+        if(a === "D") return 3;
+
+        // agar "0", "1" kabi bo‘lsa
+        const n = Number(a);
+        if(!Number.isNaN(n)) return n;
+      }
+
+      return -1;
+    }
+
+    function normalizeOptionsToArray(opts){
+      if(Array.isArray(opts)) return opts;
+
+      if(opts && typeof opts === "object"){
+        // {A:"...",B:"...",C:"...",D:"..."}
+        return [opts.A, opts.B, opts.C, opts.D];
+      }
+
+      return [];
+    }
+
+    function convertWindowQuestionsToSection(sectionName){
+      const raw = window.questions || [];
+      const questions = raw.map((q, i) => {
+        const opts = normalizeOptionsToArray(q.options);
+
+        return {
+          n: q.id ?? (i + 1),
+          q: q.question ?? "",
+          options: opts,
+          correctIndex: normalizeAnswerToIndex(q.answer)
+        };
+      });
+
+      return {
+        name: sectionName,
+        questions
+      };
+    }
+
     async function loadSectionAndChooseMode(sec){
       try{
+        // har safar tozalaymiz
         window.QUESTION_SECTION = null;
+        window.questions = []; // ASN uchun
+
         await loadScript(sec.file);
 
-        if(!window.QUESTION_SECTION || !window.QUESTION_SECTION.questions){
+        // 1) eski format ishlasa
+        if(window.QUESTION_SECTION && window.QUESTION_SECTION.questions){
+          currentSection = window.QUESTION_SECTION;
+        }
+        // 2) ASN format ishlasa
+        else if(window.questions && window.questions.length){
+          currentSection = convertWindowQuestionsToSection(sec.name);
+        }
+        else {
           alert("Bo‘lim yuklandi, lekin savollar topilmadi.");
           return;
         }
-
-        currentSection = window.QUESTION_SECTION;
 
         modeTitle.textContent = `3) Rejim: ${currentSubject.name} → ${currentSection.name}`;
         modeInfo.textContent = `Savollar: ${currentSection.questions.length} ta`;
@@ -374,7 +452,6 @@
     }
 
     function shuffleArray(arr){
-      // Fisher–Yates
       for(let i = arr.length - 1; i > 0; i--){
         const j = Math.floor(Math.random() * (i + 1));
         [arr[i], arr[j]] = [arr[j], arr[i]];
@@ -391,16 +468,15 @@
 
       answersMap = {};
 
-      // activeQuestions ni tayyorlab olamiz
       if(currentMode === "random"){
-        // nusxa olamiz va aralashtiramiz
         activeQuestions = shuffleArray([...currentSection.questions]);
       } else {
-        // original tartib
         activeQuestions = [...currentSection.questions];
       }
 
-      quizTitle.textContent = `4) Test: ${currentSubject.name} → ${currentSection.name} (${currentMode === "random" ? "Random" : "Oddiy"})`;
+      quizTitle.textContent =
+        `4) Test: ${currentSubject.name} → ${currentSection.name} (${currentMode === "random" ? "Random" : "Oddiy"})`;
+
       renderQuestion();
       showScreen("quiz");
     }
@@ -425,9 +501,8 @@
       item.options.forEach((optText, idx) => {
         const btn = document.createElement("button");
         btn.className = "opt";
-        btn.innerHTML = `${String.fromCharCode(65 + idx)}) ${optText}`;
+        btn.innerHTML = `${String.fromCharCode(65 + idx)}) ${optText ?? ""}`;
 
-        // agar bu savolga javob berilgan bo‘lsa -> bosib bo‘lmaydi
         const saved = answersMap[currentIndex];
         if(saved){
           btn.disabled = true;
@@ -438,7 +513,6 @@
         optionsWrap.appendChild(btn);
       });
 
-      // agar javob oldin tanlangan bo‘lsa ranglarni qayta chiqaramiz
       const saved = answersMap[currentIndex];
       if(saved){
         const buttons = [...optionsWrap.querySelectorAll(".opt")];
@@ -460,11 +534,9 @@
       const buttons = [...optionsWrap.querySelectorAll(".opt")];
       const correctIndex = item.correctIndex;
 
-      // javobni saqlaymiz
       const isCorrect = chosenIndex === correctIndex;
       answersMap[currentIndex] = { chosenIndex, isCorrect };
 
-      // UI bo‘yash
       if(buttons[correctIndex]) buttons[correctIndex].classList.add("correct");
 
       if(isCorrect){
@@ -474,7 +546,6 @@
         if(buttons[chosenIndex]) buttons[chosenIndex].classList.add("wrong");
       }
 
-      // Endi hamma option disable bo‘ladi
       buttons.forEach(b => b.disabled = true);
 
       scorePill.textContent = `To‘g‘ri: ${correctCount} | Noto‘g‘ri: ${wrongCount}`;
@@ -502,17 +573,14 @@
     }
 
     function goBack(){
-      // quiz -> mode
       if(!screenQuiz.classList.contains("hidden")){
         showScreen("mode");
         return;
       }
-      // mode -> sections
       if(!screenMode.classList.contains("hidden")){
         showScreen("sections");
         return;
       }
-      // sections -> subjects
       if(!screenSections.classList.contains("hidden")){
         showScreen("subjects");
         return;
@@ -537,7 +605,6 @@
 
     // EVENTS
     btnNext.addEventListener("click", () => {
-      // oxirgi savolda bo‘lsa natija chiqsin
       if(currentIndex === activeQuestions.length - 1){
         alert(`🎉 Test tugadi!\n\nNatija:\nTo‘g‘ri: ${correctCount} ta\nNoto‘g‘ri: ${wrongCount} ta`);
         return;
